@@ -1,0 +1,35 @@
+{
+  "name": "aliyun-pages-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap --target=node12 --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisonge/aliyun-pages-proxy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lisonge/aliyun-pages-proxy/issues"
+  },
+  "homepage": "https://github.com/lisonge/aliyun-pages-proxy#readme",
+  "devDependencies": {
+    "@types/core-js": "^2.5.4",
+    "@types/node": "^15.3.0",
+    "@types/node-fetch": "^2.5.10",
+    "@types/source-map-support": "^0.5.3",
+    "esbuild": "^0.12.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "core-js": "^3.12.1",
+    "node-fetch": "^2.6.1",
+    "raw-body": "^2.4.1",
+    "source-map-support": "^0.5.19"
+  }
+}
