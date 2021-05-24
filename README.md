@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:49:05
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-24 20:49:32
+ * @LastEditTime: 2021-05-24 20:54:46
 -->
 
 # aliyun-pages-proxy
@@ -14,3 +14,9 @@
 可解决 github pages 在某些线路(例如成都联通)的 dns 解析阶段被 `墙` 而造成无法访问的情况
 
 本工具仅在 github pages 设置自定义域名的情况下工作
+
+## 待实现的功能
+
+- 缓存命中
+
+- 路由拦截，让非 *.html 资源 301 cdn(fastgit.org, jsdelivr.com, etc)
