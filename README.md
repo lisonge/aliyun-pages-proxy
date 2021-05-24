@@ -2,14 +2,14 @@
  * @Date: 2021-05-17 21:49:05
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-24 20:48:20
+ * @LastEditTime: 2021-05-24 20:49:32
 -->
 
 # aliyun-pages-proxy
 
 基于 `域名双线解析` 和 `DNS拦截` 的 Github Pages 代理镜像 并使用 `HTTP2` 加速的 函数计算 工具
 
-部署于 中国香港 阿里云
+部署于 中国香港 阿里云，运行于 阿里云 函数计算 中国香港地区 使用免费额度
 
 可解决 github pages 在某些线路(例如成都联通)的 dns 解析阶段被 `墙` 而造成无法访问的情况
 
