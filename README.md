@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:49:05
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-24 20:54:46
+ * @LastEditTime: 2021-05-26 23:23:05
 -->
 
 # aliyun-pages-proxy
@@ -15,8 +15,10 @@
 
 本工具仅在 github pages 设置自定义域名的情况下工作
 
+## 附加功能
+
+- `search` 包含 `302_CDN` 或 请求头字段 `accept` 包含 `text/html` 会 `302` 到 `cdn.jsdelivr.com`
+
 ## 待实现的功能
 
-- 缓存命中
-
-- 路由拦截，让非 *.html 资源 301 cdn(fastgit.org, jsdelivr.com, etc)
+- 中间缓存

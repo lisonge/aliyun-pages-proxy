@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:28:29
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-24 20:21:52
+ * @LastEditTime: 2021-05-26 23:18:44
  */
 import 'source-map-support/register';
 import 'core-js';
@@ -93,19 +93,42 @@ export class DnsHookHttp2Session {
   }
 }
 
-let session: DnsHookHttp2Session | undefined = undefined;
+let session: DnsHookHttp2Session | null = null;
 export const aliyunHandler = async (
   aliyunReq: AliyunRequest,
   aliyunResp: AliyunResponse,
   aliyunCtx: AliyunContext
 ) => {
   const req = await aliyunReq2nodeReq(aliyunReq);
-  if (!session) {
+
+  // <<<------------------------------------------
+  // 这里应该分离出一个拦截器，作为懒狗我就不写了
+  if (req.method == 'GET') {
+    const { headers } = req;
+    const url = new URL(req.url);
+    if (
+      url.searchParams.has('302_CDN') ||
+      !(headers.get('accept') ?? '').includes('text/html')
+    ) {
+      const Location = `https://cdn.jsdelivr.net/gh/lisonge/lisonge.gitHub.io@master${url.pathname}${url.search}`;
+      const resp = new Response(undefined, {
+        status: 302,
+        headers: {
+          Location,
+        },
+      });
+      await nodeResp2aliyunResp(resp, aliyunResp);
+      return;
+    }
+  }
+  // <<<------------------------------------------
+
+  if (session == null) {
     session = await DnsHookHttp2Session.create(
       'dev.songe.li',
       'lisonge.github.io'
     );
   }
   const resp = await session.invoke(req);
-  nodeResp2aliyunResp(resp, aliyunResp);
+  await nodeResp2aliyunResp(resp, aliyunResp);
 };
