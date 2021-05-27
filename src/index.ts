@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:28:29
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-26 23:18:44
+ * @LastEditTime: 2021-05-27 14:21:19
  */
 import 'source-map-support/register';
 import 'core-js';
@@ -99,6 +99,13 @@ export const aliyunHandler = async (
   aliyunResp: AliyunResponse,
   aliyunCtx: AliyunContext
 ) => {
+  // <<<------------------------------------------
+  // 初始化配置
+  const branch = 'master';
+  const username = 'lisonge';
+  const customDomain = 'dev.songe.li';
+  // <<<------------------------------------------
+
   const req = await aliyunReq2nodeReq(aliyunReq);
 
   // <<<------------------------------------------
@@ -110,7 +117,8 @@ export const aliyunHandler = async (
       url.searchParams.has('302_CDN') ||
       !(headers.get('accept') ?? '').includes('text/html')
     ) {
-      const Location = `https://cdn.jsdelivr.net/gh/lisonge/lisonge.gitHub.io@master${url.pathname}${url.search}`;
+      let Location = `https://cdn.jsdelivr.net/gh/${username}/${username}.gitHub.io@`;
+      Location += encodeURIComponent(branch) + url.pathname + url.search;
       const resp = new Response(undefined, {
         status: 302,
         headers: {
@@ -125,8 +133,8 @@ export const aliyunHandler = async (
 
   if (session == null) {
     session = await DnsHookHttp2Session.create(
-      'dev.songe.li',
-      'lisonge.github.io'
+      customDomain,
+      `${username}.github.io`
     );
   }
   const resp = await session.invoke(req);
