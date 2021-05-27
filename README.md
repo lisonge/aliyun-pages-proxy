@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:49:05
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-27 14:51:51
+ * @LastEditTime: 2021-05-27 14:53:50
 -->
 
 # aliyun-pages-proxy
@@ -19,7 +19,7 @@
 
 ## 附加功能
 
-- `search` 包含 `302_CDN` 或 请求头字段 `accept` 包含 `text/html` 会 `302` 到 `cdn.jsdelivr.com`
+- `search` 包含 `302_CDN` 或 请求头字段 `accept` 不包含 `text/html` 会 `302` 到 `cdn.jsdelivr.com`
 
 ## 待实现的功能
 
