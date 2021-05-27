@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:49:05
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-26 23:23:05
+ * @LastEditTime: 2021-05-27 14:51:51
 -->
 
 # aliyun-pages-proxy
@@ -14,6 +14,8 @@
 可解决 github pages 在某些线路(例如成都联通)的 dns 解析阶段被 `墙` 而造成无法访问的情况
 
 本工具仅在 github pages 设置自定义域名的情况下工作
+
+部署域名 <https://dev.songe.li/>
 
 ## 附加功能
 
