@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:28:29
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-07-15 11:06:19
+ * @LastEditTime: 2021-07-15 11:24:52
  */
 import 'source-map-support/register';
 import 'core-js';
@@ -34,9 +34,9 @@ export const aliyunHandler = async (
     const { headers } = req;
     const url = new URL(req.url);
     // 强制https
-    if (url.protocol == 'http') {
+    if (url.protocol == 'http:') {
       const u2 = new URL(url.href);
-      u2.protocol = 'https';
+      u2.protocol = 'https:';
       const resp = new Response(undefined, {
         status: 301,
         headers: {
