@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:28:29
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-27 14:58:06
+ * @LastEditTime: 2021-07-15 11:06:19
  */
 import 'source-map-support/register';
 import 'core-js';
@@ -33,6 +33,19 @@ export const aliyunHandler = async (
   if (req.method == 'GET') {
     const { headers } = req;
     const url = new URL(req.url);
+    // 强制https
+    if (url.protocol == 'http') {
+      const u2 = new URL(url.href);
+      u2.protocol = 'https';
+      const resp = new Response(undefined, {
+        status: 301,
+        headers: {
+          Location: u2.href,
+        },
+      });
+      await nodeResp2aliyunResp(resp, aliyunResp);
+      return;
+    }
     if (
       url.searchParams.has('302_CDN') ||
       !(headers.get('accept') ?? '').includes('text/html')
