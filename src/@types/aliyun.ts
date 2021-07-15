@@ -2,7 +2,7 @@
  * @Date: 2021-02-21 19:52:00
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-21 11:22:52
+ * @LastEditTime: 2021-07-15 10:29:53
  */
 
 import stream from 'stream';
@@ -36,9 +36,18 @@ type Service = {
  * @see <https://help.aliyun.com/document_detail/74757.html#section-960-nx8-b4i>
  */
 export type AliyunRequest = internal.Readable & {
-  headers: { [key: string]: string };
+  headers: { [key: string]: string } & {
+    host: string;
+    'x-forwarded-proto': 'https' | 'http';
+  };
+  /**
+   * /函数接收路径
+   */
   path: string;
   queries: { [key: string]: string };
+  /**
+   * /服务路径+函数接收路径+查询参数
+   */
   url: string;
   clientIP: string;
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'HEAD' | 'PATCH';
