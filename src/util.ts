@@ -2,22 +2,31 @@
  * @Date: 2021-02-21 20:23:34
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-05-24 20:32:56
+ * @LastEditTime: 2021-07-15 10:43:34
  */
 import { AliyunRequest, AliyunResponse } from './@types/aliyun';
 import { Request, Response, Headers } from 'node-fetch';
 import getRawBody from 'raw-body';
 import { URL } from 'url';
-import { join } from 'path';
-
+/**
+ * 
+ * @param aliyunReq 
+ * @param useRealPath if true url.pathname=aliyunReq.url else url.pathname=aliyunReq.path
+ * @returns 
+ */
 export async function aliyunReq2nodeReq(
-  aliyunReq: AliyunRequest
+  aliyunReq: AliyunRequest,
+  useRealPath = false
 ): Promise<Request> {
   const { path, headers, method, queries } = aliyunReq;
-  const url = new URL('https://dev.songe.li');
-  url.pathname = join(url.pathname, path);
+  const url = new URL(
+    `${headers['x-forwarded-proto']}://${headers['host']}${aliyunReq.url}`
+  );
   for (const k in queries) {
     url.searchParams.set(k, queries[k]);
+  }
+  if (!useRealPath) {
+    url.pathname = path;
   }
   let body: Buffer | undefined = undefined;
   if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
