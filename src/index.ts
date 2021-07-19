@@ -2,7 +2,7 @@
  * @Date: 2021-05-17 21:28:29
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-07-15 11:24:52
+ * @LastEditTime: 2021-07-19 20:53:21
  */
 import 'source-map-support/register';
 import 'core-js';
@@ -30,22 +30,22 @@ export const aliyunHandler = async (
 
   // <<<------------------------------------------
   // 这里应该分离出一个拦截器，作为懒狗我就不写了
+  const url = new URL(req.url);
+  // 强制https
+  if (url.protocol == 'http:') {
+    const u2 = new URL(url.href);
+    u2.protocol = 'https:';
+    const resp = new Response(undefined, {
+      status: ['GET', 'HEAD'].includes(req.method) ? 301 : 308,
+      headers: {
+        Location: u2.href,
+      },
+    });
+    await nodeResp2aliyunResp(resp, aliyunResp);
+    return;
+  }
   if (req.method == 'GET') {
     const { headers } = req;
-    const url = new URL(req.url);
-    // 强制https
-    if (url.protocol == 'http:') {
-      const u2 = new URL(url.href);
-      u2.protocol = 'https:';
-      const resp = new Response(undefined, {
-        status: 301,
-        headers: {
-          Location: u2.href,
-        },
-      });
-      await nodeResp2aliyunResp(resp, aliyunResp);
-      return;
-    }
     if (
       url.searchParams.has('302_CDN') ||
       !(headers.get('accept') ?? '').includes('text/html')
