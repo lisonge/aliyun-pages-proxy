@@ -46,10 +46,14 @@ export const aliyunHandler = async (
   }
   if (req.method == 'GET') {
     const { headers } = req;
-    if (
-      url.searchParams.has('302_CDN') ||
-      !(headers.get('accept') ?? '').includes('text/html')
-    ) {
+    const CDN_302 = url.searchParams.get('CDN_302');
+    let useCdn = false;
+    if (CDN_302 == null) {
+      useCdn = headers.get('accept')?.includes('text/html') === false;
+    } else {
+      useCdn = CDN_302 == 'on';
+    }
+    if (useCdn) {
       let Location = `https://cdn.jsdelivr.net/gh/${username}/${username}.gitHub.io@`;
       Location += encodeURIComponent(branch) + url.pathname + url.search;
       const resp = new Response(undefined, {

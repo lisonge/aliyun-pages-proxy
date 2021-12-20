@@ -19,10 +19,8 @@
 
 ## 附加功能
 
-- 对于 GET，`search` 包含 `302_CDN` 或 请求头字段 `accept` 不包含 `text/html` 会 `302` 到 `cdn.jsdelivr.com`
+- 对于 GET，`url.searchParams` 不含 `302_CDN` 且 请求头字段 `accept` 不包含 `text/html` 会 `302` 到 `cdn.jsdelivr.com`
+
+- 若包含 `302_CDN`, 且 `302_CDN=on` 会 `302` 到 `cdn.jsdelivr.com`
 
 - 对于 GET 或 HEAD 请求 ，强制 301 重定向至 https，其他则 308 重定向至 https
-
-## 待实现的功能
-
-- 中间缓存
