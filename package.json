@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap --target=node14 --minify && tsc --emitDeclarationOnly --outDir dist"
+    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap --target=node12 --minify && tsc --emitDeclarationOnly --outDir dist"
   },
   "repository": {
     "type": "git",
