@@ -51,7 +51,7 @@ export const aliyunHandler = async (
     if (CDN_302 == null) {
       useCdn = headers.get('accept')?.includes('text/html') === false;
     } else {
-      useCdn = CDN_302 == 'on';
+      useCdn = CDN_302 == 'ON';
     }
     if (useCdn) {
       let Location = `https://cdn.jsdelivr.net/gh/${username}/${username}.gitHub.io@`;
