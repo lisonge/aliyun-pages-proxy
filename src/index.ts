@@ -68,7 +68,7 @@ export const aliyunHandler = async (
   }
   // <<<------------------------------------------
 
-  if (session == null) {
+  if (session == null || session.session.destroyed) {
     session = await DnsHookHttp2Session.create(
       customDomain,
       `${username}.github.io`
