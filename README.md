@@ -15,7 +15,7 @@
 
 本工具仅在 github pages 设置自定义域名的情况下工作
 
-部署域名 <https://dev.songe.li/>
+部署域名 <https://i.songe.li/>
 
 ## 附加功能
 

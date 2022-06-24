@@ -21,9 +21,9 @@ export const aliyunHandler = async (
 ) => {
   // <<<------------------------------------------
   // 初始化配置
-  const branch = 'master';
+  const branch = 'main';
   const username = 'lisonge';
-  const customDomain = 'dev.songe.li';
+  const customDomain = 'i.songe.li';
   // <<<------------------------------------------
 
   const req = await aliyunReq2nodeReq(aliyunReq);
