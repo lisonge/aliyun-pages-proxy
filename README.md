@@ -25,7 +25,7 @@ pnpm run build
 pnpm run deloy
 ```
 
-这样大陆用户访问的就是 香港的服务，再代理到 github pages
+这样大陆用户访问的就是 香港的服务，再代理到 github pages，就能加速访问到实际的页面资源
 
 ## 附加功能
 
