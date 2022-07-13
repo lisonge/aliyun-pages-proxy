@@ -17,9 +17,23 @@
 
 部署域名 <https://i.songe.li/>
 
+## 具体实现
+
+首先设置 首先设置云解析
+
+- 海外地区 CNAME 记录 lisonge.github.io
+- 大陆地区 CNAME 记录 1887623261562936.cn-hongkong.fc.aliyuncs.com
+
+然后绑定 github pages 自定义域名
+
+然后在 阿里云函数计算 香港地区 新建 node14 函数 部署
+
+对于 https ，需要在 `阿里云 SSL 证书` 申请一个免费的 证书
+
+在函数计算-高级功能 域名管理 添加 自定义域名 i.songe.li ，上传证书，设置路径 /\* 指向刚刚部署的函数
+
 ## 附加功能
 
 - 对于 GET，`url.searchParams` 不含 `CDN_302` 且 请求头字段 `accept` 不包含 `text/html` 会 `302` 到 `cdn.jsdelivr.com`
-- 若包含 `CDN_302`, 且 `CDN_302=ON` 会 `302` 到 `cdn.jsdelivr.com`
-- 若包含 `CDN_302`, 且 `CDN_302=OFF` 不会 `302` 到 `cdn.jsdelivr.com`
-- 对于 GET 或 HEAD 请求 ，强制 301 重定向至 https，其他则 308 重定向至 https
+- 若包含 `CDN_302=ON`, 则 302 到 `cdn.jsdelivr.com`
+- 若包含 `CDN_302=OFF`, 则不会 302 到 `cdn.jsdelivr.com`
