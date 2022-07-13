@@ -1,0 +1,7 @@
+author = 'https://github.com/lisonge'
+
+# 转发目标 url
+forwardUrl = 'https://i.songe.li/'
+
+# cdn 重定向路径
+cdnBaseUrl = 'https://cdn.jsdelivr.net/gh/lisonge/lisonge.gitHub.io@main/'

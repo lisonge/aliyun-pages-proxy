@@ -50,7 +50,7 @@ services:
         name: 'pages-proxy'
         description: 'hello world by serverless devs'
         runtime: nodejs14
-        codeUri: ./dist
+        codeUri: ./
         handler: index.aliyunHandler
         memorySize: 128
         timeout: 20

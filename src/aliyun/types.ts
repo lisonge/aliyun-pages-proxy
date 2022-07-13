@@ -2,11 +2,10 @@
  * @Date: 2021-02-21 19:52:00
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-07-15 10:29:53
+ * @LastEditTime: 2021-08-19 15:32:45
  */
 
 import stream from 'stream';
-import internal from 'stream';
 
 /**
  * @see <https://help.aliyun.com/document_detail/156876.htm#section-mcp-kix-v2j>
@@ -35,7 +34,7 @@ type Service = {
 /**
  * @see <https://help.aliyun.com/document_detail/74757.html#section-960-nx8-b4i>
  */
-export type AliyunRequest = internal.Readable & {
+export type AliyunRequest = stream.Readable & {
   headers: { [key: string]: string } & {
     host: string;
     'x-forwarded-proto': 'https' | 'http';

@@ -2,26 +2,30 @@
  * @Date: 2021-02-21 20:23:34
  * @LastEditors: lisonge
  * @Author: lisonge
- * @LastEditTime: 2021-07-15 10:43:34
+ * @LastEditTime: 2021-08-19 15:31:52
  */
-import { AliyunRequest, AliyunResponse } from './@types/aliyun';
-import { Request, Response, Headers } from 'node-fetch';
+
+import { Headers, Request, Response } from 'node-fetch';
 import getRawBody from 'raw-body';
 import { URL } from 'url';
+import { AliyunRequest, AliyunResponse } from './types';
+
 /**
- * 
- * @param aliyunReq 
+ * aliyunReq2nodeReq
+ * @param aliyunReq
  * @param useRealPath if true url.pathname=aliyunReq.url else url.pathname=aliyunReq.path
- * @returns 
+ * @returns
  */
 export async function aliyunReq2nodeReq(
   aliyunReq: AliyunRequest,
   useRealPath = false
 ): Promise<Request> {
   const { path, headers, method, queries } = aliyunReq;
-  const url = new URL(
-    `${headers['x-forwarded-proto']}://${headers['host']}${aliyunReq.url}`
-  );
+  const url = new URL(`http://127.0.0.1/`);
+  url.protocol = headers['x-forwarded-proto'];
+  url.host = headers['host'];
+  url.pathname = aliyunReq.url;
+  // `${}://${headers['host']}${aliyunReq.url}`
   for (const k in queries) {
     url.searchParams.set(k, queries[k]);
   }
