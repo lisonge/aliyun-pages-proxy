@@ -29,5 +29,5 @@ pnpm run deloy
 
 ## 附加功能
 
-- `url.searchParams` 不含 `CDN` 且 请求头字段 `accept` 不包含 `text/html` 会 `301` 到 `cdn.jsdelivr.com`
+- `url.searchParams` 不含 `CDN` 且 请求头字段 `accept` 不包含 `text/html` 会 301 到 `cdn.jsdelivr.com`
 - `url.searchParams` 若包含 `CDN=ON`, 则 301 到 `cdn.jsdelivr.com`
