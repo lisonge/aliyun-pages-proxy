@@ -59,12 +59,10 @@ export default class DnsHookHttp2Session {
     const respBuffer = await new Promise<Buffer>((resolve, reject) => {
       stream.on('end', () => {
         resolve(Buffer.concat(chunkList));
-        // const data = Buffer.concat(chunkList);
-        // console.log(`\n${data.toString('utf-8')}`);
-        // session.close();
+        stream.end();
       });
-      stream.end();
     });
+    console.log(respBuffer.toString('utf-8'));
     const resp = new Response(respBuffer, {
       headers: respHeaders,
       status: statusCode,
@@ -84,6 +82,9 @@ export default class DnsHookHttp2Session {
         callback(null, address, family);
       },
     });
+    console.log('DnsHookHttp2Session.create');
     return new DnsHookHttp2Session(session);
   }
 }
+
+Buffer.from('', 'base64').toString('utf-8');

@@ -7,7 +7,11 @@
 import 'source-map-support/register';
 import 'core-js';
 
-import { AliyunContext, AliyunRequest, AliyunResponse } from './@types/aliyun';
+import type {
+  AliyunContext,
+  AliyunRequest,
+  AliyunResponse,
+} from './@types/aliyun';
 import { aliyunReq2nodeReq, nodeResp2aliyunResp } from './util';
 import { Headers, Request, Response } from 'node-fetch';
 import { URL } from 'url';
@@ -19,6 +23,7 @@ export const aliyunHandler = async (
   aliyunResp: AliyunResponse,
   aliyunCtx: AliyunContext
 ) => {
+  console.log('start');
   // <<<------------------------------------------
   // 初始化配置
   const branch = 'main';
@@ -68,6 +73,7 @@ export const aliyunHandler = async (
   }
   // <<<------------------------------------------
 
+  console.log('aliyunHandler-->');
   if (session == null || session.session.destroyed) {
     session = await DnsHookHttp2Session.create(
       customDomain,
@@ -76,4 +82,5 @@ export const aliyunHandler = async (
   }
   const resp = await session.invoke(req);
   await nodeResp2aliyunResp(resp, aliyunResp);
+  console.log('aliyunHandler--<');
 };

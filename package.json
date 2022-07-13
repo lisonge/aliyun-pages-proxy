@@ -1,35 +1,36 @@
 {
-  "name": "aliyun-pages-proxy",
+  "name": "pages-proxy",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap --target=node12 --minify && tsc --emitDeclarationOnly --outDir dist"
+    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap --target=node14",
+    "deploy": "s deploy -y --use-local"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lisonge/aliyun-pages-proxy.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "lisonge",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lisonge/aliyun-pages-proxy/issues"
   },
   "homepage": "https://github.com/lisonge/aliyun-pages-proxy#readme",
   "devDependencies": {
     "@types/core-js": "^2.5.5",
-    "@types/node": "^14.18.1",
-    "@types/node-fetch": "^2.5.12",
+    "@types/node": "^14.18.21",
+    "@types/node-fetch": "^2.6.2",
     "@types/source-map-support": "^0.5.4",
-    "esbuild": "^0.12.29",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.5.4"
+    "esbuild": "^0.14.49",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "core-js": "^3.20.0",
-    "node-fetch": "^2.6.6",
-    "raw-body": "^2.4.2",
+    "core-js": "^3.23.4",
+    "node-fetch": "^2.6.7",
+    "raw-body": "^2.5.1",
     "source-map-support": "^0.5.21"
+  },
+  "volta": {
+    "node": "14.20.0"
   }
 }
