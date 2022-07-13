@@ -20,15 +20,7 @@ import {
  */
 export const corsPreflightedHook: BeforeForwardHook = (req) => {
   if (req.method === 'OPTIONS') {
-    return End.from(
-      new Response(undefined, {
-        headers: {
-          'access-control-allow-origin': '*',
-          'access-control-allow-methods': '*',
-          'access-control-allow-headers': '*',
-        },
-      })
-    );
+    return End.from(new Response());
   }
 };
 

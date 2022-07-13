@@ -12,6 +12,7 @@ import { End, Next } from './middleware';
 
 export const handler = async (req: Request): Promise<Response> => {
   try {
+    let respTemp: Response | undefined = undefined;
     console.log('beforeFuncList', beforeFuncList.map((f) => f.name).toString());
     for (const beforeFunc of beforeFuncList) {
       const result = await beforeFunc(req);
@@ -26,16 +27,20 @@ export const handler = async (req: Request): Promise<Response> => {
           break;
         } else {
           console.log('end.resp', value.status);
-          return value;
+          respTemp = value;
+          break;
         }
       } else {
         console.log('void', beforeFunc.name);
       }
     }
 
-    console.log('fetch req.url', req.url);
-    let resp = await fetch(req);
-    console.log('fetch resp.status', resp.status);
+    if (!respTemp) {
+      console.log('fetch req.url', req.url);
+      respTemp = await fetch(req);
+      console.log('fetch resp.status', respTemp.status);
+    }
+    const resp = respTemp;
 
     console.log('afterFuncList', afterFuncList.map((f) => f.name).toString());
     for (const afterFunc of afterFuncList) {
@@ -43,13 +48,13 @@ export const handler = async (req: Request): Promise<Response> => {
       if (result !== undefined) {
         const { value } = result;
         if (result instanceof Next) {
-          resp = value;
+          respTemp = value;
         } else {
           return value;
         }
       }
     }
-    return resp;
+    return respTemp;
   } catch (error) {
     let statusCode = 500;
     let body: BodyInit;
