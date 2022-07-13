@@ -1,10 +1,3 @@
-/*
- * @Date: 2021-03-19 00:37:41
- * @LastEditors: lisonge
- * @Author: lisonge
- * @LastEditTime: 2021-03-19 00:37:49
- */
-
 export class BaseError extends Error {
   readonly status: number;
   constructor(status: number, message?: string) {

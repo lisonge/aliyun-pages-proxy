@@ -1,10 +1,3 @@
-/*
- * @Author: lisonge
- * @Date: 2021-08-19 14:48:17
- * @LastEditTime: 2021-08-19 15:47:30
- * @LastEditors: lisonge
- */
-
 import fetch, { BodyInit, Request, Response } from 'node-fetch';
 import { afterFuncList, beforeFuncList } from '../interceptor';
 import { BaseError } from './error';

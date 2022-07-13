@@ -1,10 +1,3 @@
-/*
- * @Date: 2021-03-05 14:23:03
- * @lastEditors: lisonge
- * @Author: lisonge
- * @lastEditTime: 2021-03-05 18:08:10
- */
-
 import { Request, Response } from 'node-fetch';
 
 type ReqResp = Response | Request;

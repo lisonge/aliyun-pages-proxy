@@ -1,9 +1,3 @@
-/*
- * @Date: 2021-05-18 20:38:44
- * @LastEditors: lisonge
- * @Author: lisonge
- * @LastEditTime: 2021-05-19 12:25:30
- */
 import http2 from 'http2';
 
 (async function () {

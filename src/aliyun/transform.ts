@@ -1,10 +1,3 @@
-/*
- * @Date: 2021-02-21 20:23:34
- * @LastEditors: lisonge
- * @Author: lisonge
- * @LastEditTime: 2021-08-19 15:31:52
- */
-
 import { Headers, Request, Response } from 'node-fetch';
 import getRawBody from 'raw-body';
 import { URL } from 'url';

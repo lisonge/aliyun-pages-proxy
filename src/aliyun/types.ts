@@ -1,10 +1,3 @@
-/*
- * @Date: 2021-02-21 19:52:00
- * @LastEditors: lisonge
- * @Author: lisonge
- * @LastEditTime: 2021-08-19 15:32:45
- */
-
 import stream from 'stream';
 
 /**

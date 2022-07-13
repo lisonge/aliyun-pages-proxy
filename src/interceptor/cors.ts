@@ -1,10 +1,3 @@
-/*
- * @Date: 2021-03-18 15:48:07
- * @LastEditors: lisonge
- * @Author: lisonge
- * @LastEditTime: 2021-08-19 15:45:39
- */
-
 import { Response } from 'node-fetch';
 import {
   AfterForwardHook,
